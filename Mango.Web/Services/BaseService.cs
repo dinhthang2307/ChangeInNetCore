@@ -1,6 +1,7 @@
 ﻿using Mango.Web.Models;
 using Mango.Web.Services.IServices;
 using Newtonsoft.Json;
+using System.Net.Http;
 using System.Text;
 
 namespace Mango.Web.Services
@@ -27,7 +28,8 @@ namespace Mango.Web.Services
             {
                 var client = httpClient.CreateClient("MangoAPI");
                 HttpRequestMessage message = new HttpRequestMessage();
-                message.Headers.Add("Content-Type", "application/json");
+                message.Headers.Add("Accept", "*/*");
+                //message.Headers.Add("Content", "application/json");
                 message.RequestUri = new Uri(apiRequest.Url);
                 client.DefaultRequestHeaders.Clear();
                 if (apiRequest.Data != null)
